@@ -1,75 +1,84 @@
 /* app logo */
 
 .logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
 }
 
 .logo-img {
-    height: 100px;
-    width: 100px;
+  height: 100px;
+  width: 100px;
 }
 
 /* cart logo */
 
 .cart-logo {
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
 }
 
 /* header */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
 }
 
 /* nav-bar  */
 
 .nav-bar {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .nav-bar ul {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .nav-bar ul li {
-    margin: 5px;
-    padding: 5px;
-    list-style-type: none;
-    font-size: 25px;
+  margin: 5px;
+  padding: 5px;
+  list-style-type: none;
+  font-size: 25px;
 }
 
 /* res carts */
 
 .food-carts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .gokul-veg {
-    height: auto;
-    width: 180px;
-    padding: 5px;
+  height: auto;
+  width: 180px;
+  padding: 5px;
 }
 
 .gokul-veg:hover {
-    border: 1px solid black;
-    cursor: pointer;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 .res-biryani-img {
-    width: 100%;
+  width: 100%;
 }
 
 .res-details {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
+}
+
+/* filter btn */
+
+.filter-btn {
+  margin: 10px;
+  padding: 5px;
+  font-size: 15px;
+  cursor: pointer;
 }
