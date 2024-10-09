@@ -51,13 +51,15 @@
 .food-carts {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
 }
 
 .gokul-veg {
   height: auto;
-  width: 180px;
-  padding: 5px;
+  width: 280px;
+  padding: 10px;
+  background-color: #f0f0f0;
 }
 
 .gokul-veg:hover {
@@ -78,6 +80,50 @@
 
 .filter-btn {
   margin: 10px;
+  padding: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.shimmer-btn {
+  display: flex;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px;
+  gap: 10px;
+}
+
+.shimmer-res-btn, .shimmer-search-btn {
+  width: 200px;
+  height: 30px;
+  margin: 10px;
+  background-color: #f0f0f0;
+}
+
+.shimmer-ui {
+
+  height: 400px;
+  width: 280px;
+  margin: 5px;
+  background-color: #f0f0f0;
+}
+
+.login-btn {
+  padding: 5px 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search-box {
+  padding: 5px;
+  font-size: 15px;
+}
+
+.search-btn {
   padding: 5px;
   font-size: 15px;
   cursor: pointer;
