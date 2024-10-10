@@ -9,8 +9,8 @@
 }
 
 .logo-img {
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  margin: 0 10px;
 }
 
 /* cart logo */
@@ -25,6 +25,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border: 1px solid black;
 }
 
@@ -56,7 +57,6 @@
 }
 
 .gokul-veg {
-  height: auto;
   width: 280px;
   padding: 10px;
   background-color: #f0f0f0;
@@ -73,10 +73,13 @@
 
 .res-details {
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+
 }
 
 /* filter btn */
+
 
 .filter-btn {
   margin: 10px;
@@ -125,6 +128,19 @@
 
 .search-btn {
   padding: 5px;
+  margin-right: 20px;
   font-size: 15px;
   cursor: pointer;
+}
+
+.no-restaurant {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.eachRes{
+  height: 100px;
+  width: 100px;
 }
