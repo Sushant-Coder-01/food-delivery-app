@@ -1,44 +1,15 @@
-import User from "./User";
-import UserClass from "./UserClass";
-import { Component } from "react";
+import useCounter from "../utils/useCounter";
 
-class About extends Component {
-  constructor(props) {
-    super(props);
-    console.log("parent constructor");
-  }
+const About = () => {
+  const { count, increment, reset } = useCounter(0);
 
-  async componentDidMount() {
-    const data = await fetch("https://api.github.com/users/Sushant-Coder-01");
-
-    const json = await data.json();
-
-    console.log(json);
-
-    this.setState({
-      userInfo: json,
-    });
-    console.log("Parent child class mounted");
-  }
-
-  componentDidUpdate() {
-    console.log("Parent componet did update");
-  }
-
-  componentWillUnmount() {
-    console.log("parent component will unmount");
-  }
-
-  render() {
-    console.log("parent rendered");
-    return (
-      <div>
-        <h1>About myself</h1>
-        <h2>.............</h2>
-        <User />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={increment}>increment</button>
+      <button onClick={reset}>reset</button>
+    </div>
+  );
+};  
 
 export default About;

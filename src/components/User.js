@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const User = (props) => {
   const [count, setCount] = useState(0);
 
-  useEffect(async() => {
+  useEffect(() => {
   });
 
   return (

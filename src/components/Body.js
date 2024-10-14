@@ -2,71 +2,29 @@ import ResturantCart from "./ResturantCards";
 import { useState, useEffect } from "react";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestaurants from "../utils/useRestaurants";
 
 const Body = () => {
-  const [listOfResturants, setListOfResturants] = useState([]);
-
-  const [filterdRestaurantList, setFilterdRestaurantList] = useState("");
+  const [filterdRestaurantList, setFilterdRestaurantList] = useState([]);
 
   const [inputText, setInputText] = useState("");
 
+  const listOfResturants = useRestaurants();
+
   useEffect(() => {
-    fethData();
-    // fetchUpdatedData();
-  }, []);
+    setFilterdRestaurantList(listOfResturants);
+  }, [listOfResturants]);
 
-  const fethData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+  const onlineStatus = useOnlineStatus();
 
-    const json = await data.json();
+  if (onlineStatus === false)
+    return <h1>You are offline. Please check you connection...!</h1>;
 
-    setListOfResturants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-
-    setFilterdRestaurantList(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+  const input = (e) => {
+    setInputText(e.target.value);
+    console.log("body render");
   };
-
-  // const fetchUpdatedData = async () => {
-  //   const updatedData = await fetch(
-  //     "https://www.swiggy.com/dapi/restaurants/list/update",
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         lat: 18.5204303,
-  //         lng: 73.8567437,
-  //         nextOffset: "CJhlELQ4KICIhef1/4XkczCnEzgE",
-  //         widgetOffset: {
-  //           NewListingView_category_bar_chicletranking_TwoRows: "",
-  //           NewListingView_category_bar_chicletranking_TwoRows_Rendition: "",
-  //           Restaurant_Group_WebView_SEO_PB_Theme: "",
-  //           collectionV5RestaurantListWidget_SimRestoRelevance_food_seo: "9",
-  //           inlineFacetFilter: "",
-  //           restaurantCountWidget: "",
-  //         },
-  //         filters: {},
-  //         seoParams: {
-  //           seoUrl: "https://www.swiggy.com/",
-  //           pageType: "FOOD_HOMEPAGE",
-  //           apiName: "FoodHomePage",
-  //         },
-  //         page_type: "DESKTOP_WEB_LISTING",
-  //         _csrf: "HEJxwZ2Db9UR-6XoRPyh-Yw9xZRZkSLXa-gUCw84",
-  //       }),
-  //     }
-  //   );
-
-  //   const json = await updatedData.json();
-
-  //   console.log(json);
-  // };
 
   return listOfResturants.length === 0 ? (
     <Shimmer />
@@ -77,10 +35,7 @@ const Body = () => {
           type="text"
           className="search-box"
           value={inputText}
-          onChange={(e) => {
-            setInputText(e.target.value);
-            console.log("body render");
-          }}
+          onChange={input}
         ></input>
         <button
           className="search-btn"

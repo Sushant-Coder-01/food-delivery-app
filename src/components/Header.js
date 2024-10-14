@@ -2,9 +2,12 @@ import { APP_LOGO } from "../utils/constant";
 import { CART_LOGO } from "../utils/constant";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("login");
+
+  const onlineStatus = useOnlineStatus();
 
   return (
     <div className="header">
@@ -13,12 +16,18 @@ const Header = () => {
       </div>
       <div className="nav-bar">
         <ul>
-          <li><Link to="/">Home</Link></li>
+          <li>Online Statue: {onlineStatus ? "🟢" : " 🔴"}</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
           <li>
             <Link to="/about">About Us</Link>
           </li>
           <li>
             <Link to="/contacts">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
           </li>
           <li>
             <img className="cart-logo" alt="Cart Logo" src={CART_LOGO} />
