@@ -29,16 +29,16 @@ const Body = () => {
   return listOfResturants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className="body mb-10">
       <div className="filter">
         <input
           type="text"
-          className="search-box"
+          className="ml-4 my-4 mr-1 p-1 border-2 border-solid border-black rounded-md w-64"
           value={inputText}
           onChange={input}
         ></input>
         <button
-          className="search-btn"
+          className="border border-solid border-black px-4 py-1  rounded-md bg-orange-400 hover:bg-orange-300"
           onClick={() => {
             const filterdResList = listOfResturants.filter((res) =>
               res.info.name.toLowerCase().includes(inputText.toLowerCase())
@@ -49,7 +49,7 @@ const Body = () => {
           Search
         </button>
         <button
-          className="filter-btn"
+          className="border border-solid border-black px-4 py-1  rounded-md mx-10 bg-orange-400 hover:bg-orange-300"
           onClick={() => {
             // filter the list
             const filterdList = listOfResturants.filter(
@@ -64,7 +64,7 @@ const Body = () => {
       {filterdRestaurantList.length === 0 ? (
         <h1 className="no-restaurant">No Restaurants Found...!</h1>
       ) : (
-        <div className="food-carts">
+        <div className="flex flex-wrap justify-center">
           {filterdRestaurantList.map((resturant) => (
             <Link
               key={resturant.info.id}

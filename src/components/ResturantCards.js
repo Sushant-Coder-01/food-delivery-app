@@ -7,22 +7,20 @@ const ResturantCart = (props) => {
     resData?.info;
 
   return (
-    <div className="gokul-veg">
-      <div className="res-img">
-        <img
-          className="res-biryani-img"
-          alt="Biryani Image"
+    <div className="m-4 p-4 bg-orange-100 rounded-md hover:bg-orange-200 transition-transform hover:scale-105 cursor-pointer">
+      <div>
+        <img className="w-72 h-60 rounded-md"
           src={RESTAURANT_IMAGE + cloudinaryImageId}
         />
       </div>
-      <div className="res-name">
-        <h2>{name}</h2>
-        <h3>{cuisines.join(", ")}</h3>
+      <div>
+        <h2 className="font-bold w-64 my-4 line-clamp-1">{name}</h2>
+        <h3 className="w-64 text-md line-clamp-1">{cuisines.join(", ")}</h3>
       </div>
-      <div className="res-details">
-        <h4>{avgRating} Stars</h4>
-        <h4>{sla.deliveryTime} mins</h4>
-        <h4>{costForTwo}</h4>
+      <div className="flex flex-wrap justify-between mx-2 my-4">
+        <h4 className="font-bold text-gray-600">{avgRating} Stars</h4>
+        <h4 className="font-bold text-gray-600">{sla.deliveryTime} mins</h4>
+        <h4 className="font-bold text-gray-600">{costForTwo}</h4>
       </div>
     </div>
   );
