@@ -1,4 +1,4 @@
-import ResturantCart from "./ResturantCards";
+import ResturantCart, { withPromotedLabel } from "./ResturantCards";
 import { useState, useEffect } from "react";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
@@ -10,11 +10,13 @@ const Body = () => {
 
   const [inputText, setInputText] = useState("");
 
-  const listOfResturants = useRestaurants();
+  const { restaurants, loading, handleScroll } = useRestaurants([]);
+
+  const PromotedRestaurant = withPromotedLabel(ResturantCart);
 
   useEffect(() => {
-    setFilterdRestaurantList(listOfResturants);
-  }, [listOfResturants]);
+    setFilterdRestaurantList(restaurants);
+  }, [restaurants]);
 
   const onlineStatus = useOnlineStatus();
 
@@ -26,7 +28,14 @@ const Body = () => {
     console.log("body render");
   };
 
-  return listOfResturants.length === 0 ? (
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [loading]);
+
+  // console.log(filterdRestaurantList);
+
+  return loading && restaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body mb-10">
@@ -40,7 +49,7 @@ const Body = () => {
         <button
           className="border border-solid border-black px-4 py-1  rounded-md bg-orange-400 hover:bg-orange-300"
           onClick={() => {
-            const filterdResList = listOfResturants.filter((res) =>
+            const filterdResList = restaurants.filter((res) =>
               res.info.name.toLowerCase().includes(inputText.toLowerCase())
             );
             setFilterdRestaurantList(filterdResList);
@@ -61,8 +70,8 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      {filterdRestaurantList.length === 0 ? (
-        <h1 className="no-restaurant">No Restaurants Found...!</h1>
+      {filterdRestaurantList?.length === 0 ? (
+        <Shimmer />
       ) : (
         <div className="flex flex-wrap justify-center">
           {filterdRestaurantList.map((resturant) => (
@@ -70,7 +79,11 @@ const Body = () => {
               key={resturant.info.id}
               to={"/restaurants/" + resturant.info.id}
             >
-              <ResturantCart resData={resturant} />
+              {resturant.info.isOpen ? (
+                <PromotedRestaurant resData={resturant} />
+              ) : (
+                <ResturantCart resData={resturant} />
+              )}
             </Link>
           ))}
         </div>

@@ -7,9 +7,10 @@ const ResturantCart = (props) => {
     resData?.info;
 
   return (
-    <div className="m-4 p-4 bg-orange-100 rounded-md hover:bg-orange-200 transition-transform hover:scale-105 cursor-pointer">
+    <div className="m-4 p-4 bg-orange-100 rounded-md hover:bg-orange-200 transition-transform cursor-pointer">
       <div>
-        <img className="w-72 h-60 rounded-md"
+        <img
+          className="h-48 w-64 rounded-md"
           src={RESTAURANT_IMAGE + cloudinaryImageId}
         />
       </div>
@@ -24,6 +25,21 @@ const ResturantCart = (props) => {
       </div>
     </div>
   );
+};
+
+// Higher Order Component
+
+export const withPromotedLabel = (ResturantCart) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-gray-400 px-2 py-1 rounded-md transition-transform z-10 hover:shadow-inherit">
+          OPEN
+        </label>
+        <ResturantCart {...props} />
+      </div>
+    );
+  };
 };
 
 export default ResturantCart;
