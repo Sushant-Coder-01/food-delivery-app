@@ -3,7 +3,7 @@ import { RESTAURANT_IMAGE } from "../utils/constant";
 const ItemList = (props) => {
   const { itemCards } = props;
 
-  console.log(itemCards);
+  // console.log(itemCards);
 
   return (
     <div>
@@ -32,7 +32,6 @@ const ItemList = (props) => {
                 className="w-36 h-36 rounded-lg" alt="image"
                 src={RESTAURANT_IMAGE + c?.card?.info?.imageId}
               />
-              {console.log(RESTAURANT_IMAGE + c?.card?.info)}
             </div>
             <div>
               <button className="shadow-lg border-b-2 text-white bg-black px-3 py-1 rounded-lg -m-px-10">

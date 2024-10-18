@@ -10,7 +10,7 @@ const Body = () => {
 
   const [inputText, setInputText] = useState("");
 
-  const { restaurants, loading, handleScroll } = useRestaurants([]);
+  const restaurants = useRestaurants();
 
   const PromotedRestaurant = withPromotedLabel(ResturantCart);
 
@@ -25,17 +25,13 @@ const Body = () => {
 
   const input = (e) => {
     setInputText(e.target.value);
-    console.log("body render");
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [loading]);
 
   // console.log(filterdRestaurantList);
 
-  return loading && restaurants?.length === 0 ? (
+ 
+
+  return restaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body mb-10">
@@ -61,7 +57,7 @@ const Body = () => {
           className="border border-solid border-black px-4 py-1  rounded-md mx-10 bg-orange-400 hover:bg-orange-300"
           onClick={() => {
             // filter the list
-            const filterdList = listOfResturants.filter(
+            const filterdList = restaurants.filter(
               (res) => res.info.avgRating > 4
             );
             setFilterdRestaurantList(filterdList);
@@ -74,7 +70,7 @@ const Body = () => {
         <Shimmer />
       ) : (
         <div className="flex flex-wrap justify-center">
-          {filterdRestaurantList.map((resturant) => (
+          {filterdRestaurantList?.map((resturant) => (
             <Link
               key={resturant.info.id}
               to={"/restaurants/" + resturant.info.id}
