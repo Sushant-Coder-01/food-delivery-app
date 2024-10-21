@@ -1,13 +1,17 @@
 import { APP_LOGO } from "../utils/constant";
 import { CART_LOGO } from "../utils/constant";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("login");
 
   const onlineStatus = useOnlineStatus();
+
+  const {user} = useContext(UserContext);
+
 
   return (
     <div className="flex justify-between items-center px-4 py-2 shadow-md">
@@ -16,7 +20,9 @@ const Header = () => {
       </div>
       <div>
         <ul className="flex items-center">
-          <li className="p-4 font-bold text-lg">Online Status: {onlineStatus ? "🟢" : " 🔴"}</li>
+          <li className="p-4 font-bold text-lg">
+            Online Status: {onlineStatus ? "🟢" : " 🔴"}
+          </li>
           <li className="p-4 font-bold text-lg">
             <Link to="/">Home</Link>
           </li>
@@ -42,6 +48,9 @@ const Header = () => {
             >
               {loginBtn}
             </button>
+          </li>
+          <li className="p-4 font-bold text-lg">
+            {user}
           </li>
         </ul>
       </div>

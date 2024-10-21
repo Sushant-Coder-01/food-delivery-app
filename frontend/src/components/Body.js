@@ -1,9 +1,10 @@
 import ResturantCart, { withPromotedLabel } from "./ResturantCards";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestaurants from "../utils/useRestaurants";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [filterdRestaurantList, setFilterdRestaurantList] = useState([]);
@@ -27,9 +28,9 @@ const Body = () => {
     setInputText(e.target.value);
   };
 
-  // console.log(filterdRestaurantList);
+  const { setUserName, user } = useContext(UserContext);
 
- 
+  // console.log(filterdRestaurantList);
 
   return restaurants?.length === 0 ? (
     <Shimmer />
@@ -65,6 +66,14 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+        <input
+          type="text"
+          className="ml-4 my-4 mr-1 p-1 border-2 border-solid border-black rounded-md w-64"
+          value={user}
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+        ></input>
       </div>
       {filterdRestaurantList?.length === 0 ? (
         <Shimmer />

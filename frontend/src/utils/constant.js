@@ -1,6 +1,6 @@
 // Always use "SNAKE_CASE" to write variable names.
 
-// export const SWIGGY_API = "./dummyData.js";
+export const SWIGGY_API = "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=18.61610&lng=73.72860&carousel=true&third_party_vendor=1";
 
 export const RESTAURANT_IMAGE =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";

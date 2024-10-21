@@ -3,9 +3,13 @@ import { useParams } from "react-router-dom";
 import { RESTAURANT_IMAGE } from "../utils/constant";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantMenuCategory from "./RestaurantMenuCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { restaurantId } = useParams();
+
+  const [showIndex, setShowIndex] = useState(null);
+  const [toggle, setToggle] = useState(false);
 
   const resInfo = useRestaurantMenu(restaurantId);
 
@@ -24,7 +28,7 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  console.log(resInfo?.data?.cards[2]?.card?.card?.info);
+  // console.log(resInfo?.data?.cards[2]?.card?.card?.info);
 
   return (
     <div className="flex-col w-6/12 justify-center m-auto my-10">
@@ -36,17 +40,21 @@ const RestaurantMenu = () => {
           />
         </div>
         <div>
-          <div className="font-bold text-gray-700 text-6xl my-2 ">{name}</div>
+          <div className="font-bold text-gray-700 text-4xl my-2 ">{name}</div>
           <div className="text-xl">Cost: {costForTwoMessage}</div>
           <div className="text-lg">Rating: {avgRating}</div>
           <div className="text-sm text-gray-700">Area: {areaName}</div>
         </div>
       </div>
       <div>
-        {categories?.map((category) => (
+        {categories?.map((category, index) => (
           <RestaurantMenuCategory
             key={category?.card?.card.title}
             data={category?.card?.card}
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() =>
+              setShowIndex((prevIndex) => prevIndex === index ? null : index)
+            }
           />
         ))}
       </div>
