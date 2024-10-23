@@ -11,7 +11,7 @@ const ResturantCart = (props) => {
     resData?.info;
 
   return (
-    <div className="m-4 p-4 bg-orange-100 rounded-md hover:bg-orange-200 transition-transform cursor-pointer">
+    <div data-testid = "resCard" className="m-4 p-4 bg-orange-100 rounded-md hover:bg-orange-200 transition-transform cursor-pointer">
       <div>
         <img
           className="h-48 w-64 rounded-md"

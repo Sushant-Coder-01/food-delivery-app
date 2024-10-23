@@ -12,11 +12,14 @@ const RestaurantMenu = () => {
   const [toggle, setToggle] = useState(false);
 
   const resInfo = useRestaurantMenu(restaurantId);
-
+  // console.log("resInfo", resInfo);
+  // if (!resInfo) return;
   if (resInfo === null) return <Shimmer />;
 
   const { name, avgRating, costForTwoMessage, areaName, cloudinaryImageId } =
-    resInfo?.data?.cards[2]?.card?.card?.info;
+    resInfo?.data?.cards[2]?.card?.card?.info || {};
+
+  // console.log(resInfo?.data?.cards[2]?.card?.card?.info)
 
   // const { itemCards } =
   //   resInfo?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
@@ -28,7 +31,7 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  // console.log(resInfo?.data?.cards[2]?.card?.card?.info);
+  console.log(categories);
 
   return (
     <div className="flex-col w-6/12 justify-center m-auto my-10">
@@ -53,7 +56,7 @@ const RestaurantMenu = () => {
             data={category?.card?.card}
             showItems={index === showIndex ? true : false}
             setShowIndex={() =>
-              setShowIndex((prevIndex) => prevIndex === index ? null : index)
+              setShowIndex((prevIndex) => (prevIndex === index ? null : index))
             }
           />
         ))}

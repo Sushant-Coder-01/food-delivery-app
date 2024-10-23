@@ -39,6 +39,8 @@ const Body = () => {
       <div className="filter">
         <input
           type="text"
+          data-testid = "seachBox"
+          placeholder="Search Food You Want..."
           className="ml-4 my-4 mr-1 p-1 border-2 border-solid border-black rounded-md w-64"
           value={inputText}
           onChange={input}
