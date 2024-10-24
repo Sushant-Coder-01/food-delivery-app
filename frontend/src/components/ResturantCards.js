@@ -14,7 +14,7 @@ const ResturantCart = (props) => {
     <div data-testid = "resCard" className="m-4 p-4 bg-orange-100 rounded-md hover:bg-orange-200 transition-transform cursor-pointer">
       <div>
         <img
-          className="h-48 w-64 rounded-md"
+          className="h-72 w-64 rounded-md"
           src={RESTAURANT_IMAGE + cloudinaryImageId}
         />
       </div>
@@ -38,9 +38,9 @@ export const withPromotedLabel = (ResturantCart) => {
   return (props) => {
     return (
       <div>
-        <label className="absolute bg-gray-600 mx-4 px-2 py-1 rounded-sm transition-transform z-10 hover:shadow-inherit text-sm text-white">
+        {/* <label className="absolute bg-gray-600 mx-4 px-2 py-1 rounded-sm transition-transform z-10 hover:shadow-inherit text-sm text-white">
           OPEN
-        </label>
+        </label> */}
         <ResturantCart {...props} />
       </div>
     );
