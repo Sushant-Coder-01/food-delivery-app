@@ -15,7 +15,8 @@ const ItemList = (props) => {
   return (
     <div>
       {itemCards?.map((item, index) => (
-        <div
+        <div 
+          data-testid = "itemCard"
           key={item?.card?.info?.id || index}
           className="border-b-2 m-4 p-2  flex justify-between "
         >

@@ -31,7 +31,6 @@ const RestaurantMenu = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  console.log(categories);
 
   return (
     <div className="flex-col w-6/12 justify-center m-auto my-10">
